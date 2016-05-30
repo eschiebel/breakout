@@ -1,0 +1,78 @@
+html, body {
+    height: 100%;
+}
+.the-game {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 2em;;
+}
+.court {
+    position: relative;
+    border: 1px solid grey;
+    background-color: #131313;
+    color: #666;
+    margin: 0 15px;
+    box-sizing: content-box;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+.scoreboard {
+    margin: 0 15px;
+    text-align: center;
+}
+
+.ball {
+    position: absolute;
+    border-radius: 50%;
+    background-color: red;
+    background-image: radial-gradient(circle 20px at 0 0, rgba(0,0,0,0), rgba(0,0,0,0), rgba(0,0,0,.8)), radial-gradient(circle 16px at 4.5px 4px, rgba(255,255,255,.7), rgba(0,0,0,0));
+}
+
+.paddle {
+    position: absolute;
+    border-radius: 3px;
+    top:0;
+    left: 0;
+    background-color: #666;
+}
+.wall {
+    position: absolute;
+}
+.brick {
+    position: absolute;
+    box-sizing: border-box;
+    border: 1px solid silver;
+    background-color: red;
+    background-image: linear-gradient(165deg, #d00, #d00 45%, #b00 55% );
+}
+
+.court .message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    line-height: 2em;
+    text-align: center;
+}
+.scoreboard > div {
+    margin: 1em 0;
+}
+.scoreboard button {
+    margin: 0 7px;
+}
+.scoreboard .icon {
+    width: 32px;
+    height: 32px;
+    background-size: 100%;
+}
+'.scoreboard button .stop.icon {
+    background-image: url('images/stop.svg');
+}
+.scoreboard button .icon.run {
+    background-image: url('images/play.svg');
+}
+.scoreboard button .icon.pause {
+    background-image: url('images/pause.svg');
+}
