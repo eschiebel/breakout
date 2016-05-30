@@ -10,10 +10,10 @@ class Scoreboard extends React.Component {
                     <button title="stop" onClick={this.restart.bind(this)}>Restart</ button>
                 </div>
                 <div>
-                    <span className='label'>Balls:</span> <span className='value balls'>{this.props.balls}</span>
+                    <span className='label'>Score:</span> <span className="score">{this.props.score}</span>
                 </div>
                 <div>
-                    <span className='label'>Score:</span> <span className="score">{this.props.score}</span>
+                    <span className='label'>Balls:</span> <span className='value balls'>{this.props.balls}</span>
                 </div>
             </div>
         );

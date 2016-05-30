@@ -1,26 +1,33 @@
 html, body {
     height: 100%;
 }
+#game {
+    width: 608px;   /* width of court + its border */
+    margin: 0 auto;
+    padding: 7px 0;
+}
 .the-game {
+    margin: 0 auto;
+}
+.scoreboard {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    padding: 2em;;
+    justify-content: space-between;;
+}
+.scoreboard > div {
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 .court {
     position: relative;
     border: 4px solid #666;
     background-color: #131313;
     color: #666;
-    margin: 0 15px;
     box-sizing: content-box;
     flex-shrink: 0;
     flex-grow: 0;
 }
-.scoreboard {
-    margin: 0 15px;
-    text-align: center;
-}
+
 
 .ball {
     position: absolute;
@@ -66,7 +73,11 @@ html, body {
     color: #131313;
 }
 .scoreboard > div {
-    margin: 1em 0;
+    display: inline;
+    margin: 0 1em;
+}
+.scoreboard > div span {
+    line-height: 30px;
 }
 .scoreboard button {
     border: 1px solid #131313;
