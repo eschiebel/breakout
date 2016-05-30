@@ -16,7 +16,7 @@ class Court extends React.Component {
             message = "Click to start\nClick again to pause"
             break;
         case "paused":
-            message = "Click here to continue";
+            message = "Click to continue";
             break;
         case "won":
             message = "Congratulations!";
