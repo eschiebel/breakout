@@ -2,10 +2,14 @@ import React from 'react';
 
 
 function Ball(props) {
+    // unsure what is faster, this or setting pos
+    //transform: 'translate(' + props.x + 'px,' + props.y + 'px)'
+
     var styl = {
         width: props.diameter + 'px',
         height: props.diameter + 'px',
-        transform: 'translate(' + props.x + 'px,' + props.y + 'px)'
+        left: props.x + 'px',
+        top: props.y + 'px'
     }
     return <div className='ball' style={styl} />;
 }

@@ -188,7 +188,7 @@ class GameStore {
             // let the paddle impact the balls direction
             let paddle_v = paddle.getIn(['vel', 'x']);
             vx += paddle_v/2;
-            vx = Math.min(vx, 10);   // cap velocity at 10px / tick or it gets out of hand
+            vx = Math.min(vx, vMax);   // cap velocity or it gets out of hand
 
             ball = ball.setIn(['pos', 'x'], ballPath.x1).setIn(['pos', 'y'], ballPath.y1)
                     .setIn(['vel', 'x'], vx).setIn(['vel', 'y'], vy);
@@ -289,7 +289,7 @@ const bricksPerRow = 8;
 const brickW = courtW/bricksPerRow;
 const brickH = brickW / 3.5;
 const wallTop = courtH / 10;
-const vMax = 10;
+const vMax = 8;
 // game status: stopped | running | paused | won | lost
 function initGameState() {
     return new Immutable.fromJS({

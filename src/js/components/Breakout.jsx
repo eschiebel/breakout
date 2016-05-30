@@ -2,6 +2,7 @@ import React from 'react';
 import GameStore from '../stores/GameStore';
 import Court from './Court';
 import Scoreboard from './Scoreboard';
+import classNames from 'classnames';
 
 const CLASS = 'Breakout';
 
@@ -24,8 +25,9 @@ class Breakout extends React.Component {
     }
     render() {
         //console.log(CLASS, 'render');
+        var cls = classNames('the-game', {running: "running" === this.state.gameState.get('status')});
         return (
-            <div className="the-game">
+            <div className={cls}>
                 <Scoreboard score={this.state.gameState.get('score')} balls={this.state.gameState.get('balls')}/>
                 <Court gameState={this.state.gameState} />
             </div>
