@@ -13,21 +13,24 @@ class Court extends React.Component {
         var message = null;
         switch(gamestatus) {
         case "stopped":
-            message = <div className='message'>Click to start<br/>Click again to pause</div>;
+            message = "Click to start\nClick again to pause"
             break;
         case "paused":
-            message = <div className='message'>Click to continue</div>;
+            message = "Click here to continue";
             break;
         case "won":
-            message = <div className='message'>Congratulations!</div>;
+            message = "Congratulations!";
             break;
         case "lost":
-            message = <div className='message'>Sorry, you lose</div>;
+            message = "Sorry, you lose";
             break;
+        }
+        if(message) {
+            message = <div className="message"  >{message}</div>;
         }
         var courtsz = this.props.gameState.getIn(['court', 'sz']);
         return (
-            <div className='court' style={{width: courtsz.get('w') + 'px', height: courtsz.get('h') + 'px'}} onClick={this.onClick.bind(this)} onTouchStart={this.onClick.bind(this)} >
+            <div className='court' style={{width: courtsz.get('w') + 'px', height: courtsz.get('h') + 'px'}} onClick={this.onClick.bind(this)} onTouchStart={this.onClick.bind(this)}>
                 <Wall y={this.props.gameState.getIn(['wall', 'pos', 'y'])}
                     brickWidth={this.props.gameState.getIn(['wall', 'bricksz', 'w'])} brickHeight={this.props.gameState.getIn(['wall', 'bricksz', 'h'])}
                     bricks={this.props.gameState.getIn(['wall', 'bricks'])}

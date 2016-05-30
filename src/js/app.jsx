@@ -45,7 +45,7 @@ function trackCursor(event) {
     mouse.y = event.pageY;
 }
 function trackCursorTouch(event) {
-    event.preventDefault();
+    //event.preventDefault();
     mouse.x = event.touches[0].pageX;
     mouse.y = event.touches[0].pageY;
 }
