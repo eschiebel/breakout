@@ -184,9 +184,15 @@ class GameStore {
                 ballPath.x1 = 2 * (paddleRect.left + paddleRect.width) - ballPath.x1;
                 vx = -vx;
             }
+
+            // let the paddle impact the balls direction
+            let paddle_v = paddle.getIn(['vel', 'x']);
+            vx += paddle_v/2;
+
             ball = ball.setIn(['pos', 'x'], ballPath.x1).setIn(['pos', 'y'], ballPath.y1)
                     .setIn(['vel', 'x'], vx).setIn(['vel', 'y'], vy);
         }
+
         return ball;
     }
 
@@ -257,20 +263,26 @@ class GameStore {
     }
 
     nextPaddle(paddle, loc) {
+
         if(loc.x < 0) {
-            return paddle.setIn(['pos', 'x'], 0);
+            loc.x = 0;
         }
-        let maxx = this.state.getIn(['court', 'sz', 'w']) - this.state.getIn(['paddle', 'sz', 'w']);
-        if(loc.x > maxx) {
-            return paddle.setIn(['pos', 'x'], maxx);
+        else {
+            let maxx = this.state.getIn(['court', 'sz', 'w']) - this.state.getIn(['paddle', 'sz', 'w']);
+            if(loc.x > maxx) {
+                loc.x = maxx;
+            }
         }
-        return paddle.setIn(['pos', 'x'], loc.x);
+        let vx = paddle.getIn(['vel', 'x']);
+        vx = loc.x - paddle.getIn(['pos', 'x']);
+        return paddle.setIn(['pos', 'x'], loc.x).setIn(['vel', 'x'], vx);
     }
 
 }
 
 const courtW = 600;
 const courtH = 750;
+const paddleW = 60;
 const brickRows = 5;
 const bricksPerRow = 8;
 const brickW = courtW/bricksPerRow;
@@ -287,8 +299,9 @@ function initGameState() {
         },
         ball: initBall(),
         paddle: {
-            sz: {w: 50, h: 10},
-            pos: {x: courtW*.45, y: courtH*.9}
+            sz: {w: paddleW, h: 10},
+            pos: {x: courtW*.45, y: courtH*.9},
+            vel: {x: 0}
         },
         wall: initWall()
     });

@@ -1,7 +1,7 @@
 # Breakout
 The [Breakout](https://en.wikipedia.org/wiki/Breakout_%28video_game%29) video game
 implemented with [React](https://facebook.github.io/react/), [Alt](http://alt.js.org/),
-ann [Immutable data structures](https://facebook.github.io/immutable-js/), just to see if this was possible.
+and [Immutable data structures](https://facebook.github.io/immutable-js/), just to see if this was possible.
 
 I was curious, could a simple video game be written in react, where all the
 game state is in a store and the various React components render to the virtual dom.

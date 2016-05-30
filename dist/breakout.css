@@ -56,23 +56,17 @@ html, body {
     line-height: 2em;
     text-align: center;
 }
+.scoreboard {
+    color: #131313;
+}
 .scoreboard > div {
     margin: 1em 0;
 }
 .scoreboard button {
-    margin: 0 7px;
+    border: 1px solid #131313;
+    padding: 4px 7px;
+    border-radius: 3px;
 }
-.scoreboard .icon {
-    width: 32px;
-    height: 32px;
-    background-size: 100%;
-}
-'.scoreboard button .stop.icon {
-    background-image: url('images/stop.svg');
-}
-.scoreboard button .icon.run {
-    background-image: url('images/play.svg');
-}
-.scoreboard button .icon.pause {
-    background-image: url('images/pause.svg');
+.scoreboard .label {
+    font-weight: bold;
 }
