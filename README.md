@@ -5,7 +5,7 @@ and [Immutable data structures](https://facebook.github.io/immutable-js/), just 
 
 I was curious, could a simple arcade game be written in react, where all the
 game state is in a store and the various React components render to the virtual dom.
-Could it keep up?  The short answer is, _yes_, though this game, a cheap knockoff of
+Could it keep up?  The short answer is, _mostly yes_, though this game, a cheap knockoff of
 the original, only has 2 moving parts.
 
 The game-play at this point is dead-simple and not very interesting. I have
