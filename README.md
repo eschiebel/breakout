@@ -1,5 +1,5 @@
 # Breakout
-The [Breakout](https://en.wikipedia.org/wiki/Breakout_%28video_game%29) video game
+The [Breakout](https://en.wikipedia.org/wiki/Breakout_%28video_game%29) arcade game
 implemented with [React](https://facebook.github.io/react/), [Alt](http://alt.js.org/),
 and [Immutable data structures](https://facebook.github.io/immutable-js/), just to see if this was possible.
 
