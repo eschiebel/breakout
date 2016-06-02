@@ -26,6 +26,7 @@ var iutils =  {
 
     // cohen-southerland clipping algorithm, but swizzled to clip the line outside
     // the rect, not within
+    // returns a code indication where in the rect the line segment intersected
     doLineRectIntersect: function(linein, rect) {
         var line = Object.assign({}, linein);   // so we don't mutate the incoming line
 
@@ -33,6 +34,7 @@ var iutils =  {
     	var outcode0 = ComputeOutCode(line.x0, line.y0, rect.left, rect.left + rect.width, rect.top, rect.top + rect.height);
     	var outcode1 = ComputeOutCode(line.x1, line.y1, rect.left, rect.left + rect.width, rect.top, rect.top + rect.height);
         var retcode = INSIDE;  // we are always moving from p0 and looking to clip p1
+        //console.log('outcode0:', outcode0, 'outcode1:', outcode1);
 
         while(true) {
     		if( !(outcode0 | outcode1) ) {   // both endpoints are inside the rect. Not really possible for our use case.
@@ -47,25 +49,30 @@ var iutils =  {
 
                 // at least one point is outside, pick it
                 let outcodeOut = outcode0 ? outcode0 : outcode1;
+                //console.log('outcodeOut:', outcodeOut);
 
                 // now find intersection point of line an rect
                 // y = y0 + slope * (x - x0), y = x= + (1 / slope) * (y - y0)
                 if(outcodeOut & TOP) {
+                    //console.log('TOP');
                     x = line.x0 + (line.x1 - line.x0) * (rect.top - line.y0) / (line.y1 - line.y0);
                     y = rect.top;
                     retcode |= TOP;
                 }
                 else if(outcodeOut & BOTTOM) {
+                    //console.log('BOTTOM');
                     x = line.x0 + (line.x1 - line.x0) * (rect.top + rect.height - line.y0) / (line.y1 - line.y0);
                     y = rect.top + rect.height;
                     retcode |= BOTTOM;
                 }
-                else if(outcodeOut & RIGHT) {
+                if(outcodeOut & RIGHT) {
+                    //console.log('RIGHT');
                     y = line.y0 + (line.y1 - line.y0) * (rect.left + rect.width - line.x0) / (line.x1 - line.x0);
                     x = rect.left + rect.width;
                     retcode |= RIGHT;
                 }
                 else if(outcodeOut & LEFT) {
+                    //console.log('LEFT');
                     y = line.y0 + (line.y1 - line.y0) * (rect.left - line.x0) / (line.x1 - line.x0);
                     x = rect.left;
                     retcode |= LEFT

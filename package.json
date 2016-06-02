@@ -2,11 +2,22 @@
   "name": "breakout",
   "version": "0.0.1",
   "description": "A ridiculous idea. A video game implemented in React.",
-  "keywords": ["react", "alt", "breakout", "video game"],
+  "keywords": [
+    "react",
+    "alt",
+    "breakout",
+    "video game"
+  ],
   "homepage": "https://eschiebel.github.io/",
-  "author": {"name": "Ed Schiebel", "email": "eschiebel@gmail.com"},
+  "author": {
+    "name": "Ed Schiebel",
+    "email": "eschiebel@gmail.com"
+  },
   "license": "MIT",
-  "repository": {"type": "git", "url": "https://github.com/eschiebel/breakout"},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eschiebel/breakout"
+  },
   "main": "index.html",
   "scripts": {
     "test": "echo \"Working on it...\" && exit 1"
@@ -33,6 +44,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
+    "chai": "^3.5.0",
     "css-loader": "^0.10.1",
     "exports-loader": "^0.6.3",
     "file-loader": "^0.8.5",
@@ -40,7 +52,9 @@
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-exec": "^0.4.7",
+    "grunt-mocha-test": "^0.12.7",
     "jsx-loader": "^0.13.1",
+    "mocha": "^2.5.3",
     "react-addons-test-utils": "^15.0.1",
     "style-loader": "^0.10.2",
     "url-loader": "^0.5.6",

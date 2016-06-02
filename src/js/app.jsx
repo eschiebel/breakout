@@ -7,8 +7,8 @@ import Breakout from './components/Breakout';
 import 'normalize.css';
 
 urlUtils.parseParams();
-var tick = urlUtils.get('tick', 66);
-var anim = tick <= 66;
+var tick = urlUtils.get('tick', -1);
+var anim = tick < 0;
 var court = null;
 var mouse = {x: 0, y: 0};
 
@@ -22,12 +22,7 @@ function runBreakout() {
     document.body.addEventListener('mousemove', trackCursor, true);
     document.body.addEventListener('touchmove', trackCursorTouch, true);
 
-    if(anim) {
-        window.requestAnimationFrame(doTick);
-    }
-    else {
-        window.setInterval(doTick, tick);
-    }
+    doTick();
 }
 
 function doTick() {
@@ -37,6 +32,9 @@ function doTick() {
     });
     if(anim) {
         window.requestAnimationFrame(doTick);
+    }
+    else {
+        window.setTimeout(doTick, tick);
     }
 }
 
