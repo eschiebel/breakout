@@ -162,7 +162,7 @@ class GameStore {
         // pos and size of the paddle
         var px = paddle.getIn(['pos', 'x']), py = paddle.getIn(['pos', 'y']);
         var pw = paddle.getIn(['sz', 'w']), ph = paddle.getIn(['sz', 'h']);
-        var paddleRect = {left: px, top: py, width: pw, height: ph}
+        var paddleRect = {left: px-pw/2, top: py, width: pw, height: ph}
 
         var outcode = intersectUtils.doLineRectIntersect(ballPath, paddleRect);
 
@@ -265,11 +265,12 @@ class GameStore {
 
     nextPaddle(paddle, loc) {
 
-        if(loc.x < 0) {
-            loc.x = 0;
+        var pw =  paddle.getIn(['sz', 'w']);
+        if(loc.x - pw/2 < 0) {
+            loc.x = pw/2;
         }
         else {
-            let maxx = this.state.getIn(['court', 'sz', 'w']) - this.state.getIn(['paddle', 'sz', 'w']);
+            let maxx = this.state.getIn(['court', 'sz', 'w']) - pw/2;
             if(loc.x > maxx) {
                 loc.x = maxx;
             }
