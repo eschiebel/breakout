@@ -13,7 +13,7 @@ class Court extends React.Component {
         var message = null;
         switch(gamestatus) {
         case "stopped":
-            message = "Click to start\nClick again to pause"
+            message = "Click or touch to start\nagain to pause"
             break;
         case "paused":
             message = "Click to continue";
