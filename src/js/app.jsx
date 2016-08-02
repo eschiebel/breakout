@@ -12,6 +12,8 @@ var anim = tick < 0;
 var court = null;
 var mouse = {x: 0, y: 0};
 
+document.addEventListener("visibilitychange", handleVisibilityChange);
+
 runBreakout();
 
 function runBreakout() {
@@ -46,4 +48,10 @@ function trackCursorTouch(event) {
     //event.preventDefault();
     mouse.x = event.touches[0].pageX;
     mouse.y = event.touches[0].pageY;
+}
+
+function handleVisibilityChange() {
+    if(document.hidden) {
+        GameActions.pause();
+    }
 }
