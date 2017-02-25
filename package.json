@@ -20,7 +20,9 @@
   },
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Working on it...\" && exit 1"
+    "test": "echo \"Working on it...\" && exit 1",
+    "build": "webpack -d --config ./webpack.config.js",
+    "buildprod": "webpack --config ./webpack.config-prod.js"
   },
   "dependencies": {
     "alt": "^0.18.4",

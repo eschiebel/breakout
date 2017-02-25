@@ -7,10 +7,10 @@ import Breakout from './components/Breakout';
 import 'normalize.css';
 
 urlUtils.parseParams();
-var tick = urlUtils.get('tick', -1);
-var anim = tick < 0;
+var tick = urlUtils.get('tick', 16.7);	// 60 frames/sec
 var court = null;
 var mouse = {x: 0, y: 0};
+var lastTickTime = 0;
 
 document.addEventListener("visibilitychange", handleVisibilityChange);
 
@@ -27,17 +27,15 @@ function runBreakout() {
     doTick();
 }
 
-function doTick() {
+function doTick(timestamp) {
+	if(timestamp - lastTickTime >= tick) {
+		lastTickTime = timestamp;
     GameActions.tick({
         x: mouse.x - court.offsetLeft,
         y: mouse.y - court.offsetTop
     });
-    if(anim) {
-        window.requestAnimationFrame(doTick);
-    }
-    else {
-        window.setTimeout(doTick, tick);
-    }
+	}
+  window.requestAnimationFrame(doTick);
 }
 
 function trackCursor(event) {
